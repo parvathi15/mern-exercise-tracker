@@ -17,16 +17,13 @@ app.use(express.json());
 
 //connection to mongodb atlas
 
-mongoose.connect("mongodb://127.0.0.1:27017/projects", {
-  useNewUrlParser: true
-});
-
-// const uri = process.env.ATLAS_URI; //mondodbatlas dashboard database
-// mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true }); //flags
+const uri = process.env.ATLAS_URI;
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true  }
+);
 const connection = mongoose.connection;
-connection.once("open", () => {
+connection.once('open', () => {
   console.log("MongoDB database connection established successfully");
-});
+})
 
 //connection to mongodb atlas
 
